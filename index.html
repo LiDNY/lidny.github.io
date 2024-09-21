@@ -1,9 +1,174 @@
 <!DOCTYPE html>
-<head>
-<title>LiDNY - Home</title>
-</head>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiDNY</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212;
+            color: #FFFFFF;
+            overflow-x: hidden;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 2rem; /* Add padding to allow for scrolling to the bottom */
+        }
+        .banner {
+            background-color: #BB86FC;
+            color: #000000;
+            padding: 1rem;
+            text-align: center;
+            width: 100%;
+            position: fixed;
+            top: -100px;
+            left: 0;
+            transition: top 0.5s ease;
+        }
+        .show-banner {
+            top: 0;
+        }
+        .content {
+            padding: 2rem;
+            text-align: center;
+            margin-top: 60px;
+        }
+        .content h1 {
+            margin: 0.5rem 0;
+        }
+        .content p {
+            margin: 0.5rem 0;
+        }
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 250px;
+            background-color: #1F1B24;
+            padding-top: 2rem;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        .nav.open {
+            transform: translateX(0);
+        }
+        .nav a {
+            display: block;
+            padding: 1rem;
+            color: #BB86FC;
+            text-decoration: none;
+            text-align: center;
+        }
+        .nav a:hover {
+            background-color: #BB86FC;
+            color: #000000;
+        }
+        .menu-btn {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: #BB86FC;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .section {
+            padding: 2rem;
+            margin: 2rem 0;
+            background-color: #1F1B24;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 800px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #1F1B24;
+            width: 100%;
+            margin-top: 2rem;
+        }
+        .social-links {
+            margin-top: 1rem;
+        }
+        .social-links a {
+            margin: 0 0.5rem;
+            color: #BB86FC;
+            text-decoration: none;
+        }
+        @keyframes loading {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
 <body>
-  <h3>Coming this weekend</h3>
+    <button class="menu-btn" onclick="toggleNav()">☰</button>
+    <div class="nav" id="nav">
+        <a href="#about">About Us</a>
+        <a href="#projects">Projects</a>
+        <a href="#downloads">Downloads</a>
+    </div>
+    <div class="container">
+        <div class="banner" id="banner">
+            LiDNY is shut down as of September 21st 2024 and will no longer be maintained.
+        </div>
+        <div class="content">
+            <h1>Welcome to LiDNY</h1>
+            <p>Random people making random things</p>
+        </div>
+        <div class="section" id="about">
+            <h2>About Us</h2>
+            <p>LiDNY was founded in 2021 by me (SonicPika) and lived on to 2024. We made 10 Software pieces in the past 3 years.</p>
+        </div>
+        <div class="section" id="projects">
+            <h2>Projects</h2>
+            <p>Over the years, we have worked on a few projects, some of them being:</p>
+            <ul>
+                <li>Koteyka's Files - A file hosting service with private upload features.</li>
+                <li>Koteyka's Cypher - A unique cypher using emoticons.</li>
+                <li>Other apps - We also make other apps, check them out in our downloads section.</li>
+            </ul>
+        </div>
+        <div class="section" id="downloads">
+            <h2>Downloads</h2>
+            <p>Our completed projects are available for download:</p>
+            <ul>
+                <li><a href="https://github.com/LiDNY/KoteykaFiles" target="_blank">Koteyka's Files</a></li>
+                <li><a href="https://sonicpikalidny.github.io/KoteykasCypher" target="_blank">Koteyka's Cypher</a></li>
+                <li><a href="https://lidny.online" target="_blank">Other LiDNY Apps</a></li>
+            </ul>
+        </div>
+        <div class="footer">
+            &copy; LiDNY 2021 - 2024. All rights eaten by Koteyka and Chernishka :3
+            <div class="social-links">
+                <a href="https://youtube.com/@Tna69">YouTube</a>
+                <a href="https://tiktok.com/@tna69">TikTok</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        function toggleNav() {
+            const nav = document.getElementById('nav');
+            nav.classList.toggle('open');
+        }
+
+        window.onscroll = function() {
+            const banner = document.getElementById('banner');
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                banner.classList.add('show-banner');
+            } else {
+                banner.classList.remove('show-banner');
+            }
+        };
+    </script>
 </body>
 </html>
