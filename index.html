@@ -3,172 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LiDNY</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <title>LiDNY - Better than ever</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
         body {
-            margin: 0;
             font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
             background-color: #121212;
-            color: #FFFFFF;
-            overflow-x: hidden;
+            color: #ffffff;
         }
-        .container {
+
+        header {
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding-bottom: 2rem;
+            background-color: #1f1f1f;
+            padding: 20px;
         }
-        .banner {
-            background-color: #BB86FC;
-            color: #000000;
-            padding: 1rem;
+
+        header .logo {
+            width: 100px;
+            height: 100px;
+        }
+
+        header h1 {
+            margin: 10px 0;
+            font-size: 2em;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 1.2em;
+            color: #b0b0b0;
+        }
+
+        nav {
+            background-color: #333333;
+            padding: 10px;
             text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: #1f1f1f;
+            border-radius: 10px;
+        }
+
+        section h2 {
+            color: #ff5722;
+        }
+
+        section p, section ul {
+            color: #b0b0b0;
+        }
+
+        footer {
+            background-color: #1f1f1f;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
             width: 100%;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        footer a {
+            color: #ff5722;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
             position: fixed;
-            top: -100px;
+            z-index: 1;
             left: 0;
-            transition: top 0.5s ease;
-        }
-        .show-banner {
             top: 0;
-        }
-        .content {
-            padding: 2rem;
-            text-align: center;
-            margin-top: 60px;
-        }
-        .content h1 {
-            margin: 0.5rem 0;
-        }
-        .content p {
-            margin: 0.5rem 0;
-        }
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
+            width: 100%;
             height: 100%;
-            width: 250px;
-            background-color: #1F1B24;
-            padding-top: 2rem;
-            transform: translateX(-100%);
-            transition: transform 0.3s ease;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
         }
-        .nav.open {
-            transform: translateX(0);
+
+        .modal-content {
+            background-color: #1f1f1f;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 10px;
+            color: #b0b0b0;
         }
-        .nav a {
-            display: block;
-            padding: 1rem;
-            color: #BB86FC;
+
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #ffffff;
             text-decoration: none;
-            text-align: center;
-        }
-        .nav a:hover {
-            background-color: #BB86FC;
-            color: #000000;
-        }
-        .menu-btn {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            font-size: 2rem;
-            background: none;
-            border: none;
-            color: #BB86FC;
             cursor: pointer;
-            z-index: 10;
-        }
-        .section {
-            padding: 2rem;
-            margin: 2rem 0;
-            background-color: #1F1B24;
-            border-radius: 8px;
-            width: 90%;
-            max-width: 800px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .footer {
-            text-align: center;
-            padding: 1rem;
-            background-color: #1F1B24;
-            width: 100%;
-            margin-top: 2rem;
-        }
-        .social-links {
-            margin-top: 1rem;
-        }
-        .social-links a {
-            margin: 0 0.5rem;
-            color: #BB86FC;
-            text-decoration: none;
-        }
-        @keyframes loading {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
-    <button class="menu-btn" onclick="toggleNav()">☰</button>
-    <div class="nav" id="nav">
-        <a href="#about">About Us</a>
-        <a href="#projects">Projects</a>
-        <a href="#downloads">Downloads</a>
+    <header>
+        <img src="LDCat.png" alt="LiDNY Logo" class="logo">
+        <h1>LiDNY</h1>
+        <p>Better than ever</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#downloads">Downloads</a></li>
+        </ul>
+    </nav>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>LiDNY was founded in 2021 by me (SonicPika) and lived on to Sep 21 2024. As of Sep 28 2024, it's back up and better than ever. We made 10 software pieces in the past 3 years. We want to hit 15 by 5 years. Help us by contributing on <a href="https://github.com/LiDNY" target="_blank">GitHub</a>.</p>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <ul>
+            <li><strong>Koteyka's Files:</strong> A file hosting service with private upload features.</li>
+            <li><strong>Koteyka's Cypher:</strong> A unique cypher using emoticons.</li>
+            <li><strong>LiDNY ISO Archive:</strong> ISO archive by LiDNY, including Windows, Linux, and even Mac!</li>
+            <li><strong>Older / Unsupported:</strong> Old website with old software, no longer supported.</li>
+        </ul>
+    </section>
+
+    <section id="downloads">
+        <h2>Downloads</h2>
+        <ul>
+            <li><a href="https://github.com/LiDNY/KoteykaFiles">Koteyka's Files</a></li>
+            <li><a href="https://lidny.github.io/KoteykasCypher">Koteyka's Cypher</a></li>
+            <li><a href="#" id="iso-link">LiDNY ISO Archive</a></li>
+            <li><a href="https://lidny.online">Older LiDNY Apps</a></li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>© LiDNY 2021 - 2024. All rights eaten by Koteyka and Chernishka :3</p>
+        <p>Follow us on <a href="https://youtube.com/@Tna69" target="_blank">YouTube</a></p>
+    </footer>
+
+    <div id="isoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Just Another ISO Collection (JAISOC)</h2>
+            <p>By SonicPika and Katanium.</p>
+            <p><a href="https://drive.google.com/drive/folders/1EGX2buj7fAwjSR13H19IjvZhHK1guKSV" target="_blank">Direct Folder Mirror (ALL ISOs)</a></p>
+            <p><a href="http://festyy.com/ehDV8h" target="_blank">Support us by watching a few ads!</a></p>
+            <p><a href="https://drive.google.com/drive/folders/1uLw0whRfclrfCsdJQMqp3N1HX_Ck5sID" target="_blank">Linux Folder Mirror</a></p>
+            <p><a href="http://festyy.com/ehDV97" target="_blank">Support us by watching a few ads!</a></p>
+            <p><a href="https://drive.google.com/drive/folders/1pHOHAottNPpsS3X5fO071yjddUJVt8Jr" target="_blank">MacOS Folder Mirror</a></p>
+            <p><a href="http://festyy.com/ehDB0w" target="_blank">Support us by watching a few ads!</a></p>
+            <p><a href="https://drive.google.com/drive/folders/1jP5_-zJv-BoiFkNtf9_7u-hRIDT28zn1" target="_blank">Windows Folder Mirror</a></p>
+            <p><a href="http://festyy.com/ehDB0u" target="_blank">Support us by watching a few ads!</a></p>
+        </div>
     </div>
-    <div class="container">
-        <div class="banner" id="banner">
-            LiDNY is shut down as of September 21st 2024 and will no longer be maintained.
-        </div>
-        <div class="content">
-            <h1>Welcome to LiDNY</h1>
-            <p>Random people making random things</p>
-        </div>
-        <div class="section" id="about">
-            <h2>About Us</h2>
-            <p>LiDNY was founded in 2021 by me (SonicPika) and lived on to 2024. We made 10 Software pieces in the past 3 years.</p>
-        </div>
-        <div class="section" id="projects">
-            <h2>Projects</h2>
-            <p>Over the years, we have worked on a few projects, some of them being:</p>
-            <ul>
-                <li>Koteyka's Files - A file hosting service with private upload features.</li>
-                <li>Koteyka's Cypher - A unique cypher using emoticons.</li>
-                <li>Other apps - We also make other apps, check them out in our downloads section.</li>
-            </ul>
-        </div>
-        <div class="section" id="downloads">
-            <h2>Downloads</h2>
-            <p>Our completed projects are available for download:</p>
-            <ul>
-                <li><a href="https://github.com/LiDNY/KoteykaFiles" target="_blank">Koteyka's Files</a></li>
-                <li><a href="https://sonicpikalidny.github.io/KoteykasCypher" target="_blank">Koteyka's Cypher</a></li>
-                <li><a href="https://lidny.online" target="_blank">Other LiDNY Apps</a></li>
-            </ul>
-        </div>
-        <div class="footer">
-            &copy; LiDNY 2021 - 2024. All rights eaten by Koteyka and Chernishka :3
-            <div class="social-links">
-                <a href="https://youtube.com/@Tna69">YouTube</a>
-                <a href="https://tiktok.com/@tna69">TikTok</a>
-            </div>
-        </div>
-    </div>
+
     <script>
-        function toggleNav() {
-            const nav = document.getElementById('nav');
-            nav.classList.toggle('open');
+        var modal = document.getElementById("isoModal");
+
+        var btn = document.getElementById("iso-link");
+
+        var span = document.getElementsByClassName("close")[0];
+
+        btn.onclick = function() {
+            modal.style.display = "block";
         }
 
-        window.onscroll = function() {
-            const banner = document.getElementById('banner');
-            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-                banner.classList.add('show-banner');
-            } else {
-                banner.classList.remove('show-banner');
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
             }
-        };
+        }
     </script>
 </body>
 </html>
